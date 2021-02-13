@@ -1,6 +1,7 @@
 package com.josealfonsomora.weatherforecast.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.josealfonsomora.weatherforecast.domain.Coord
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,11 +15,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Sys (
+data class CoordDataModel (
+	@SerializedName("lon") val lon : Double,
+	@SerializedName("lat") val lat : Double
+)
 
-	@SerializedName("type") val type : Int,
-	@SerializedName("id") val id : Int,
-	@SerializedName("country") val country : String,
-	@SerializedName("sunrise") val sunrise : Int,
-	@SerializedName("sunset") val sunset : Int
+fun CoordDataModel.toDomainModel() = Coord(
+	long = this.lon,
+	lat = this.lat
 )

@@ -1,5 +1,6 @@
 package com.josealfonsomora.weatherforecast.repository
 
+import com.josealfonsomora.weatherforecast.data.model.toDomainModel
 import com.josealfonsomora.weatherforecast.data.network.ForecastApi
 import timber.log.Timber
 import javax.inject.Inject
@@ -10,7 +11,7 @@ class WeatherRepository @Inject constructor(
     suspend fun getWeather(city: String) = try {
         val response = api.getWeatherByCity(city)
         if (response.isSuccessful) {
-            WeatherRepositoryResult.Success(response.body())
+            WeatherRepositoryResult.Success(response.body()!!.toDomainModel())
         } else {
             Timber.e("Error loading weather by city $city. Error response $response")
             Error()

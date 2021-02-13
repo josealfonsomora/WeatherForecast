@@ -1,6 +1,7 @@
 package com.josealfonsomora.weatherforecast.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.josealfonsomora.weatherforecast.domain.Weather
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,10 +15,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Weather (
+data class WeatherDataModel(
 
-	@SerializedName("id") val id : Int,
-	@SerializedName("main") val main : String,
-	@SerializedName("description") val description : String,
-	@SerializedName("icon") val icon : String
+	@SerializedName("id") val id: Int,
+	@SerializedName("main") val main: String,
+	@SerializedName("description") val description: String,
+	@SerializedName("icon") val icon: String
+)
+
+fun WeatherDataModel.toDomainModel() = Weather(
+	id = this.id,
+	main = this.main,
+	description = this.description,
+	icon = this.icon
 )

@@ -1,6 +1,7 @@
 package com.josealfonsomora.weatherforecast.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.josealfonsomora.weatherforecast.domain.Wind
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,6 +15,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Clouds (
-	@SerializedName("all") val all : Int
+data class WindDataModel(
+	@SerializedName("speed") val speed: Double,
+	@SerializedName("deg") val deg: Int
+)
+
+fun WindDataModel.toDomainModel() = Wind(
+	speed = this.speed,
+	deg = this.deg
 )

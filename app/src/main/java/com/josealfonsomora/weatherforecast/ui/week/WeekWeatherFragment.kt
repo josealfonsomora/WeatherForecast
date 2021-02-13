@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.josealfonsomora.weatherforecast.R
 import com.josealfonsomora.weatherforecast.databinding.FragmentWeekWeatherBinding
+import com.josealfonsomora.weatherforecast.domain.CityWeather
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -30,9 +31,9 @@ class WeekWeatherFragment : Fragment(R.layout.fragment_week_weather) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.weekForecast.observe(viewLifecycleOwner, Observer {
-            it.weather.forEach { weather ->
-                Timber.d("$weather")
+        viewModel.weekForecast.observe(viewLifecycleOwner, Observer { cityWeather: CityWeather ->
+            cityWeather.weather.forEach { weather ->
+                Timber.d("Weather $weather")
             }
         })
     }
