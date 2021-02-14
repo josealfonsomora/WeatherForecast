@@ -20,7 +20,7 @@ class WeekWeatherViewModel @ViewModelInject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            when (val result = weatherRepository.getWeather("Vigo")) {
+            when (val result = weatherRepository.getWeather("Dublin")) {
                 is WeatherRepositoryResult.Success<*> -> {
                     val data = result.data as WeekForecast
                     _weekForecast.postValue(data)

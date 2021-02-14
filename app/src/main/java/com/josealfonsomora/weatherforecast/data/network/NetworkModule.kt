@@ -54,7 +54,7 @@ class NetworkModule {
         Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://api.openweathermap.org")
+            .baseUrl("https://api.openweathermap.org")
             .build().create(ForecastApi::class.java)
 
 }
