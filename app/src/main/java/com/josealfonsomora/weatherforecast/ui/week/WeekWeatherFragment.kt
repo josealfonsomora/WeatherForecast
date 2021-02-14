@@ -9,9 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.josealfonsomora.weatherforecast.R
 import com.josealfonsomora.weatherforecast.databinding.FragmentWeekWeatherBinding
-import com.josealfonsomora.weatherforecast.domain.CityWeather
+import com.josealfonsomora.weatherforecast.domain.model.WeekForecast
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
+import org.joda.time.DateTime
 
 @AndroidEntryPoint
 class WeekWeatherFragment : Fragment(R.layout.fragment_week_weather) {
@@ -31,10 +31,10 @@ class WeekWeatherFragment : Fragment(R.layout.fragment_week_weather) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.weekForecast.observe(viewLifecycleOwner, Observer { cityWeather: CityWeather ->
-            cityWeather.weather.forEach { weather ->
-                Timber.d("Weather $weather")
-            }
+        viewModel.weekForecast.observe(viewLifecycleOwner, Observer { weekForecast: WeekForecast ->
+            val groupByDayOfMonth =
+                weekForecast.list.groupBy { DateTime(it.dt * 1000).dayOfMonth }.map { it.value }
+            binding.weatherList.adapter = WeekForecastListAdapter(groupByDayOfMonth)
         })
     }
 }

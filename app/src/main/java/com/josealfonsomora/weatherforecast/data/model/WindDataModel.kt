@@ -1,7 +1,7 @@
 package com.josealfonsomora.weatherforecast.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.josealfonsomora.weatherforecast.domain.Wind
+import com.josealfonsomora.weatherforecast.domain.model.Wind
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com

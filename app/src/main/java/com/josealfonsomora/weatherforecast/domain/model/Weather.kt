@@ -1,4 +1,4 @@
-package com.josealfonsomora.weatherforecast.domain
+package com.josealfonsomora.weatherforecast.domain.model
 
 data class Weather(
     val id: Int,

@@ -1,7 +1,7 @@
 package com.josealfonsomora.weatherforecast.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.josealfonsomora.weatherforecast.domain.Sys
+import com.josealfonsomora.weatherforecast.domain.model.Sys
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -16,18 +16,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 
 data class SysDataModel(
-
-	@SerializedName("type") val type: Int,
-	@SerializedName("id") val id: Int,
-	@SerializedName("country") val country: String,
-	@SerializedName("sunrise") val sunrise: Int,
-	@SerializedName("sunset") val sunset: Int
+	@SerializedName("pod") val pod: String?,
 )
 
 fun SysDataModel.toDomainModel() = Sys(
-	type = this.type,
-	id = this.id,
-	country = this.country,
-	sunrise = this.sunrise,
-	sunset = this.sunset
+	pod = this.pod
 )

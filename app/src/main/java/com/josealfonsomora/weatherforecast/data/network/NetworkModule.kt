@@ -45,7 +45,7 @@ class NetworkModule {
                     .addQueryParameter("appid", "4cb14ee5bcb95c329c5c6468c540f38f")
                 chain.proceed(newRequest.url(urlBuilder.build()).build())
             }
-            .certificatePinner(certificatePinner)
+//            .certificatePinner(certificatePinner)
             .build()
     }
 
@@ -54,8 +54,7 @@ class NetworkModule {
         Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.openweathermap.org")
+            .baseUrl("http://api.openweathermap.org")
             .build().create(ForecastApi::class.java)
 
-    // APPID = 4cb14ee5bcb95c329c5c6468c540f38f
 }
